@@ -57,7 +57,7 @@ $arenas.appendChild(createPlayer(player1));
 $arenas.appendChild(createPlayer(player2));
 
 function randomDamage(){
-    damage = Math.ceil(Math.random() * 20);
+    const damage = Math.ceil(Math.random() * 20);
     return damage
 }
 
@@ -66,13 +66,6 @@ function changeHP(player) {
     player.hp -= randomDamage();
     if (player.hp <= 0) {
         $playerLife.style.width = 0;
-        if (player.player === 1){
-            $arenas.appendChild(winsPlayer(player2.name));
-        }
-        else {
-            $arenas.appendChild(winsPlayer(player1.name));
-        }
-        $randomButton.disabled = true;
     }
     else {
         $playerLife.style.width = player.hp + '%';
@@ -95,5 +88,13 @@ $randomButton.addEventListener('click', function() {
     console.log('Fight');
     changeHP(player1);
     changeHP(player2);
-
+    if (player1.hp <= 0) {
+        $arenas.appendChild(winsPlayer(player2.name));
+        $randomButton.disabled = true;
+    }
+    if (player2.hp <= 0) {
+        $arenas.appendChild(winsPlayer(player1.name));
+        $randomButton.disabled = true;
+    }
+    
 });
