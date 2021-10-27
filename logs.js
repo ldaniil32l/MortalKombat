@@ -1,5 +1,6 @@
 import { getRandom } from "./utils.js";
 
+
 const $chat = document.querySelector('.chat');
 
 export const logs = {
@@ -42,25 +43,25 @@ export const logs = {
     draw: 'Ничья - это тоже победа!'
 };
 
-export const generateLogs = (type, player1, player2) => {
+export const generateLogs = (type, {name} = {}, {name: playerName2, hp} = {}, valueAttack) => {
     const len = logs[type].length - 1;
     let text;
     switch (type) {
         case 'start':
             const time = new Date().toLocaleTimeString();
-            text = logs[type].replace('[time]', time).replace('[player1]', player1.name).replace('[player2]', player2.name);
-            break;
-        case 'end':
-            text = logs[type][getRandom(len)].replace('[playerWins]', player1.name).replace('[playerLose]', player2.name);
+            text = logs[type].replace('[time]', time).replace('[player1]', name).replace('[player2]', playerName2);
             break;
         case 'hit':
-            text = logs[type][getRandom(len)].replace('[playerKick]', player1.name).replace('[playerDefence]', player2.name);
+            text = logs[type][getRandom(len)].replace('[playerKick]', name).replace('[playerDefence]', playerName2);
+            text = `${text} -${valueAttack} [${hp}/100]`
+            break;
+        case 'end':
+            text = logs[type][getRandom(len)].replace('[playerWins]', name).replace('[playerLose]', playerName2);
             break;
         case 'defence':
-            text = logs[type][getRandom(len)].replace('[playerKick]', player1.name).replace('[playerDefence]', player2.name);
+            text = logs[type][getRandom(len)].replace('[playerKick]', name).replace('[playerDefence]', playerName2);
             break;
         case 'draw':
-            text = logs[type];
             break;
     }
     const el = `<p>${text}</p>`;
