@@ -46,7 +46,7 @@ async function init() {
     localStorage.removeItem('player1');
     localStorage.removeItem('player2');
 
-    const players = await fetch('https://reactmarathon-api.herokuapp.com/api/mk/players').then(res => res.json());
+    const players = await fetch('../assets/selectFighter/fighters.json').then(res => res.json());
 
     let imgSrc = null;
     createEmptyPlayerBlock();
