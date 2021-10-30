@@ -281,19 +281,6 @@ body {
     top: 4px;
 }
 
-.loseTitle {
-    position: absolute;
-    top: 22%;
-    left: 50%;
-    font-size: 36px;
-    transform: translate(-50%, 0%);
-    text-transform: uppercase;
-    z-index: 1000;
-    color: white;
-    font-family: "Mortal Kombat 3";
-    text-shadow: 2px 2px 2px #cd0e03;
-}
-
 .reloadWrap {
     position: absolute;
     top: 54px;
@@ -435,3 +422,14 @@ input[type=radio]:checked + label > span:hover {
     margin-top: 0;
 }
 
+.logYellow {
+    color: rgb(253, 253, 130);
+}
+
+.logGreen {
+    color: #00d600;
+}
+
+.logRed {
+    color: rgb(248, 68, 68);
+}
